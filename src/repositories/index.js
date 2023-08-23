@@ -1,0 +1,9 @@
+import CrudRepository from "./crud-repository";
+import UserRepository from "./user-repository";
+import SoldRecordsRepository from "./sold-records-repository";
+
+export {
+    CrudRepository,
+    UserRepository,
+    SoldRecordsRepository
+}
