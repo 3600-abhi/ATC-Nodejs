@@ -20,5 +20,11 @@ router.get(
     SoldRecordsController.getSoldRecordsByUserId
 );
 
+router.get(
+    "/:recordId",
+    UserMiddleware.authenticateUser,
+    SoldRecordsController.getSoldRecordsByUserIdAndRecordId
+);
+
 
 export default router;

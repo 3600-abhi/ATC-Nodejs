@@ -3,7 +3,22 @@ const PAYMENT_STATUS = {
     PAID: "PAID"
 }
 
+const KANTA_TYPE = {
+    NORMAL_KANTA: "NORMAL_KANTA",
+    DHARAM_KANTA: "DHARAM_KANTA"
+}
+
+const GOODS_NAME = {
+    WHEAT: "WHEAT",
+    PADDY: "PADDY",
+    RICE: "RICE",
+    PADDY_SHAYAMA: "PADDY (SHAYAMA)",
+    PADDY_MOTA: "PADDY (MOTA)"
+}
+
 
 export default {
-    PAYMENT_STATUS
+    PAYMENT_STATUS,
+    KANTA_TYPE,
+    GOODS_NAME
 }

@@ -22,6 +22,19 @@ async function create(data) {
     }
 }
 
+async function getSoldRecordsByUserIdAndRecordId(data) {
+    try {
+        const soldRecord = await soldRecordsRepository.getSoldRecordsByUserIdAndRecordId(data);
+        return soldRecord;
+    } catch (error) {
+        console.log(error);
+
+        if (error instanceof AppError) throw error;
+
+        throw new AppError("Cannot get the sold-record details", StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 async function getSoldRecordsByUserId(userId) {
     try {
         const soldRecords = await soldRecordsRepository.getSoldRecordsByUserId(userId);
@@ -38,5 +51,6 @@ async function getSoldRecordsByUserId(userId) {
 
 export default {
     create,
+    getSoldRecordsByUserIdAndRecordId,
     getSoldRecordsByUserId
 }
