@@ -1,5 +1,8 @@
 import { StatusCodes } from "http-status-codes";
 import { ErrorResponse, AppError } from "../utils/errors";
+import { Enums } from "../utils/common";
+
+
 
 function validateCreatePurchaseRequest(req, res, next) {
     const {
@@ -29,6 +32,16 @@ function validateCreatePurchaseRequest(req, res, next) {
         ErrorResponse.message = "Something went wrong";
         ErrorResponse.error = new AppError(
             ["goods name is missing in incoming request"],
+            StatusCodes.BAD_REQUEST
+        );
+
+        return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
+    }
+
+    if (!Object.keys(Enums.GOODS_NAME).includes(goods_name)) {
+        ErrorResponse.message = "Something went wrong";
+        ErrorResponse.error = new AppError(
+            ["Invalid goods name present in incoming request"],
             StatusCodes.BAD_REQUEST
         );
 
