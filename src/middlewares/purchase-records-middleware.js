@@ -120,6 +120,24 @@ function validateCreatePurchaseRequest(req, res, next) {
     next();
 }
 
+
+function validateGetUsingDateWithRecentTimeOrder(req, res) {
+    const { date } = req.body;
+
+    if (date === undefined) {
+        ErrorResponse.message = "Something went wrong";
+        ErrorResponse.error = new AppError(
+            ["Date is missing in incoming request"],
+            StatusCodes.BAD_REQUEST
+        );
+
+        return res.status(StatusCodes.BAD_REQUEST).json(ErrorResponse);
+    }
+
+    next();
+}
+
 export default {
-    validateCreatePurchaseRequest
+    validateCreatePurchaseRequest,
+    validateGetUsingDateWithRecentTimeOrder
 }

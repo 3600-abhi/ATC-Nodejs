@@ -13,6 +13,11 @@ router.post(
     PurchaseRecordsController.create
 );
 
+router.get(
+    "/date-wise/:date",
+    UserMiddleware.authenticateUser,
+    PurchaseRecordsController.getUsingDateWithRecentTimeOrder
+);
 
 
 export default router;

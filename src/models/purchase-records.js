@@ -66,6 +66,8 @@ const purchaseRecordSchema = mongoose.Schema(
     }
 );
 
+
+
 const PurchaseRecords = mongoose.model("purchase_records", purchaseRecordSchema);
 
 export default PurchaseRecords;

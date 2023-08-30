@@ -19,7 +19,21 @@ async function create(data) {
     }
 }
 
+async function getUsingDateWithRecentTimeOrder(data) {
+    try {
+        const purchaseRecords = await purchaseRecordsRepository.getUsingDateWithRecentTimeOrder(data);
+        return purchaseRecords;
+    } catch (error) {
+        console.log(error);
+
+        if (error instanceof AppError) throw error;
+
+        throw new AppError("Cannot get the purchase records", StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
+
 
 export default {
-    create
+    create,
+    getUsingDateWithRecentTimeOrder
 }
