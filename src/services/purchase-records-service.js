@@ -96,6 +96,7 @@ async function destroy(data) {
     }
 }
 
+
 export default {
     create,
     getDateWise,

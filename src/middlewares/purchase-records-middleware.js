@@ -134,8 +134,8 @@ function validateCreatePurchaseRequest(req, res, next) {
 }
 
 
-function validateGetDateWiseRequest(req, res) {
-    const { date } = req.body;
+function validateGetDateWiseRequest(req, res, next) {
+    const { date } = req.params;
 
     if (date === undefined) {
         ErrorResponse.message = "Something went wrong";
