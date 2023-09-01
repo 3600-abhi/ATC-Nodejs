@@ -16,7 +16,15 @@ router.post(
 router.get(
     "/date-wise/:date",
     UserMiddleware.authenticateUser,
-    PurchaseRecordsController.getUsingDateWithRecentTimeOrder
+    PurchaseRecordsMiddleware.validateGetDateWiseRequest,
+    PurchaseRecordsController.getDateWise
+);
+
+
+router.delete(
+    "/:id",
+    UserMiddleware.authenticateUser,
+    PurchaseRecordsController.destroy
 );
 
 

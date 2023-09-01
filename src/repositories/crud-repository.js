@@ -23,8 +23,8 @@ class CrudRepository {
         return response;
     }
 
-    async destroy(_id) {
-        const response = await this.model.deleteOne({ _id });
+    async destroy(_id, userId) {
+        const response = await this.model.deleteOne({ _id, userId });
         return response;
     }
 }

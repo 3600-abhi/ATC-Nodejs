@@ -4,7 +4,6 @@ import { PurchaseRecordsRepository } from "../repositories";
 import { Constant, Enums } from "../utils/common";
 
 
-const { LABOUR_COST_PER_QUINTAL } = Constant;
 const { WHEAT, PADDY_MOTA, PADDY_SHAYAMA, RICE } = Enums.GOODS_NAME;
 
 
@@ -24,9 +23,9 @@ async function create(data) {
     }
 }
 
-async function getUsingDateWithRecentTimeOrder(data) {
+async function getDateWise(data) {
     try {
-        const purchaseRecords = await purchaseRecordsRepository.getUsingDateWithRecentTimeOrder(data);
+        const purchaseRecords = await purchaseRecordsRepository.getDateWise(data);
 
         let purchaseRecordsWithRokad = { purchaseRecords };
 
@@ -84,8 +83,21 @@ async function getUsingDateWithRecentTimeOrder(data) {
     }
 }
 
+async function destroy(data) {
+    try {
+        const purchaseRecord = await purchaseRecordsRepository.destroy(data.id, data.userId)
+        return purchaseRecord;
+    } catch (error) {
+        console.log(error);
+
+        if (error instanceof AppError) throw error;
+
+        throw new AppError("Cannot delete the purchase records", StatusCodes.INTERNAL_SERVER_ERROR);
+    }
+}
 
 export default {
     create,
-    getUsingDateWithRecentTimeOrder
+    getDateWise,
+    destroy
 }

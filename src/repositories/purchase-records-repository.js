@@ -6,7 +6,7 @@ class PurchaseRecordsRepository extends CrudRepository {
         super(PurchaseRecords);
     }
 
-    async getUsingDateWithRecentTimeOrder(data) {
+    async getDateWise(data) {
         const { userId, date } = data;
 
         const today = new Date(date);

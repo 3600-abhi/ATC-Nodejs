@@ -134,7 +134,7 @@ function validateCreatePurchaseRequest(req, res, next) {
 }
 
 
-function validateGetUsingDateWithRecentTimeOrder(req, res) {
+function validateGetDateWiseRequest(req, res) {
     const { date } = req.body;
 
     if (date === undefined) {
@@ -152,5 +152,5 @@ function validateGetUsingDateWithRecentTimeOrder(req, res) {
 
 export default {
     validateCreatePurchaseRequest,
-    validateGetUsingDateWithRecentTimeOrder
+    validateGetDateWiseRequest
 }
